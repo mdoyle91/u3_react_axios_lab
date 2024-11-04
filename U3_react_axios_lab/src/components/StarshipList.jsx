@@ -1,4 +1,5 @@
 const StarshipList = (props) => {
+  console.log(props);
   if (!props.starships) {
     return <h1> Loading Please Wait </h1>;
   } else {
@@ -6,7 +7,7 @@ const StarshipList = (props) => {
       <div>
         {props.starships.map((starship) => (
           <div key={starship.name}>
-            <h1>{starship.name}</h1>
+            <h3>{starship.name}</h3>
           </div>
         ))}
       </div>
