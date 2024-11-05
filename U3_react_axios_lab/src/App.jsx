@@ -6,6 +6,7 @@ import StarshipList from "./components/StarshipList.jsx";
 import PlanetList from "./components/PlanetList.jsx";
 import FilmList from "./components/FilmList.jsx";
 import CharacterList from "./components/CharacterList.jsx";
+import StarshipPage from "./components/StarshipPage.jsx";
 import Nav from "./components/Nav.jsx";
 import axios from "axios";
 
@@ -19,6 +20,7 @@ function App() {
     const getStarships = async () => {
       const response = await axios.get(`${BASE_URL}`);
       setStarships(response.data.results);
+      console.log("Starships Data:", response.data.results);
     };
     getStarships();
 
@@ -44,8 +46,13 @@ function App() {
   return (
     <>
       <Nav />
+      {console.log("Starships in App:", starships)}
       <Routes>
         <Route path="/" element={<h1>Starships Home Page!</h1>} />
+        <Route
+          path="/starships/:starshipId"
+          element={<StarshipPage starships={starships} />}
+        />
         <Route
           path="/starships"
           element={<StarshipList starships={starships} />}
