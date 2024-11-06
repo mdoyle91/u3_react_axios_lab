@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const StarshipList = (props) => {
   console.log(props);
   if (!props.starships) {
@@ -5,8 +7,8 @@ const StarshipList = (props) => {
   } else {
     return (
       <div>
-        {props.starships.map((starship) => (
-          <div key={starship.name}>
+        {props.starships.map((starship, index) => (
+          <div key={index}>
             <Link to={`/starships/${index}`}>{starship.name}</Link>
           </div>
         ))}
