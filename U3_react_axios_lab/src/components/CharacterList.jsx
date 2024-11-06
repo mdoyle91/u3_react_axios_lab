@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CharacterList = (props) => {
   console.log(props);
   if (!props.characters) {
@@ -5,9 +7,9 @@ const CharacterList = (props) => {
   } else {
     return (
       <div>
-        {props.characters.map((character) => (
-          <div key={character.name}>
-            <h3>{character.name}</h3>
+        {props.characters.map((character, index) => (
+          <div key={index}>
+            <Link to={`/characters/${index}`}>{character.name}</Link>
           </div>
         ))}
       </div>

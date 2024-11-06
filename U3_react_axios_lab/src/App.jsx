@@ -7,6 +7,9 @@ import PlanetList from "./components/PlanetList.jsx";
 import FilmList from "./components/FilmList.jsx";
 import CharacterList from "./components/CharacterList.jsx";
 import StarshipPage from "./components/StarshipPage.jsx";
+import PlanetPage from "./components/PlanetPage.jsx";
+import FilmPage from "./components/FilmPage.jsx";
+import CharacterPage from "./components/CharacterPage.jsx";
 import Nav from "./components/Nav.jsx";
 import axios from "axios";
 
@@ -20,7 +23,6 @@ function App() {
     const getStarships = async () => {
       const response = await axios.get(`${BASE_URL}`);
       setStarships(response.data.results);
-      console.log("Starships Data:", response.data.results);
     };
     getStarships();
 
@@ -46,7 +48,6 @@ function App() {
   return (
     <>
       <Nav />
-      {console.log("Starships in App:", starships)}
       <Routes>
         <Route path="/" element={<h1>Starships Home Page!</h1>} />
         <Route
@@ -57,8 +58,17 @@ function App() {
           path="/starships"
           element={<StarshipList starships={starships} />}
         />
+        <Route
+          path="/planets/:planetId"
+          element={<PlanetPage planets={planets} />}
+        />
         <Route path="/planets" element={<PlanetList planets={planets} />} />
+        <Route path="/films/:filmId" element={<FilmPage films={films} />} />
         <Route path="/films" element={<FilmList films={films} />} />
+        <Route
+          path="/characters/:characterId"
+          element={<CharacterPage characters={characters} />}
+        />
         <Route
           path="/characters"
           element={<CharacterList characters={characters} />}

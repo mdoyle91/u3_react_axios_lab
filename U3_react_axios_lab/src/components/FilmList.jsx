@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const FilmList = (props) => {
   console.log(props);
   if (!props.films) {
@@ -5,9 +7,9 @@ const FilmList = (props) => {
   } else {
     return (
       <div>
-        {props.films.map((film) => (
-          <div key={film.title}>
-            <h3>{film.title}</h3>
+        {props.films.map((film, index) => (
+          <div key={index}>
+            <Link to={`/films/${index}`}>{film.title}</Link>
           </div>
         ))}
       </div>

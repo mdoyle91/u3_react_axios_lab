@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const StarshipList = (props) => {
-  console.log(props);
   if (!props.starships) {
     return <h1> Loading Please Wait </h1>;
   } else {
